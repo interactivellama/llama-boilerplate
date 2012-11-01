@@ -1,0 +1,7 @@
+ErrorDocument 503 /sitedown/
+# WordPress Maintenance Page
+# ErrorDocument 503 /wp-content/sitedown/
+# RewriteEngine On
+# Redirect to directory if visitor is not your IP
+# RewriteCond %{REMOTE_ADDR} !^12\.234\.107\.242$
+# RewriteRule .* - [R=503,L]

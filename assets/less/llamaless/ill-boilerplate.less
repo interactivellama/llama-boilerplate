@@ -1,0 +1,212 @@
+/*------------------------------------------  
+Interactive Llama CSS boilerplate
+------------------------------------------*/
+
+/* remove outline from linked image */
+a img {
+	border: none;
+}
+
+
+ul {
+	list-style: none;
+	margin-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* http://css-tricks.com/things-it-might-be-funuseful-to-try-the-universal-selector-on/ */
+* {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+  
+  background-repeat: no-repeat;
+  
+  vertical-align: middle;
+}
+
+blockquote {
+    margin: 10px 10px 10px 10px;
+    font-style: italic;
+}
+
+/* Tables */
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: inherit;
+    margin: 1.5em 10px;
+}
+
+thead {
+    background: #ccc;
+    font-weight: 700;
+}
+
+th {
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #eee;
+    padding: .25em 10px;
+}
+
+tbody {
+
+}
+
+	tbody tr:nth-child(even) {
+	    background: #f9f9f9;
+	}
+
+td {
+    padding: 4px 10px;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+/* Hide for both screenreaders and browsers and hide print only items */
+
+.hidden,
+.printonly {
+    display: none;
+    visibility: hidden;
+}
+
+/* Hide only visually, but have it available for screenreaders */
+
+.visuallyhidden {
+    position: absolute!important;
+    clip: rect(1px1px1px1px);
+    /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+
+.visuallyshown {
+    position: static!important;
+    clip: auto;
+    /* IE6, IE7 */
+    clip: auto;
+}
+
+/* Hide visually and from screenreaders, but maintain layout */
+
+.invisible {
+    visibility: hidden
+}
+
+/* floats  */
+
+.left {
+    float: left
+}
+
+.center {
+    text-align: center
+}
+
+.right {
+    float: right
+}
+
+/* Use .group class (clearfix) on parent to clear nested columns. */
+
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+
+.group:after {
+    clear: both
+}
+
+.group {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+/* responsive media */
+.primary img,
+.primary embed,
+.primary object,
+.primary video {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+
+/*------------------------------------------  
+=print
+------------------------------------------*/
+
+@media print { 
+
+	body {
+		background: aqua;
+	}
+
+
+	* {
+	    color: #444!important;
+	    text-shadow: none;
+	}
+	
+	/* no background */
+	body, #main {
+		background: transparent!important;
+	}
+  	
+	/* hide */
+
+	.screen,
+	.menu,
+	#sidebar,
+	.edit-link,
+	#action {    display: none!important; }
+	
+	.navigation,
+	#social {    display: none!important; }
+
+	#primary {
+		width: 100%;
+	}
+
+	/* add  URL to all links: MUST BE FIRST! */
+
+.entry-content a[href]:after {
+	    content: " (/"attr(href) ") ";
+	    font-size: 90%;
+	}
+
+	/* override external links no prefix */
+
+	.entry-content a[href^=http]:after {    content: " (" attr(href) ") "; }
+
+	/* add  URL to email links*/
+
+	#primary a[href^=mail]:after,
+	a[href^=mail]:after,
+	a[href^=mail]:after {    content: " (" attr(href) ") "; }
+
+	pre,
+	blockquote {
+	    border: 1px solid #999;
+	    page-break-inside: avoid;
+	}
+
+	img {    page-break-inside: avoid; }
+}

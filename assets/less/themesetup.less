@@ -1,0 +1,356 @@
+// ------------------------------------------  
+// THEME SETUP
+// -- Variables and site-wide items typically changes once
+// ------------------------------------------
+
+@import "vendor/helpless.1.0.1.less";
+@import "vendor/3l/3L-mini.less";
+@import "llamaless/ill-boilerplate.less";
+
+// ------------------------------------------  
+// SITEWIDE LAYOUT
+// ------------------------------------------*/
+.pagewrapper {
+  position: relative;
+  max-width: 960px;
+
+  margin-left: auto;
+  margin-right: auto;
+  
+  // Fixed width for IE
+	.oldie & {
+			width: 960px;
+	}
+    
+}
+
+@mobilepadding: 5%;
+@tabletpadding: 10px;
+
+.pagepadding {
+	@media @lessThanDesktop {
+		padding-left: @mobilepadding;
+		padding-right: @mobilepadding;	
+	}
+}
+
+.pagemargin {
+	margin-left: @mobilepadding;
+	margin-right: @mobilepadding;
+	
+}
+
+/* Hide and show based on media queries */
+.smallscreenonly {
+	@media @desktop { 	
+		display: none;
+	}	
+}
+
+.desktoponly {
+		display: none;
+
+	@media @lessThanDesktop {
+
+	}	
+}
+
+
+// ------------------------------------------  
+// =COLORS
+// ------------------------------------------*/
+
+@green: #AABC4A;
+@greenhover: #BACC57;
+@darkgreen: #4f5827;
+@teal: #3FD6AE;
+@pink: #D63473;
+@violet: #5234D6;
+@orange: #D6903F;
+@darkgray: #242424;
+
+@black:	#000;
+@grayDarker: #222;
+@grayDark: #333;
+@gray: #555;
+@grayLight:	#999;
+@grayLighter:	#eee;
+@white:	#fff;
+
+// ------------------------------------------  
+// =TYPOGRAPHY
+// ------------------------------------------*/
+
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('fonts/BEBAS___-webfont.eot');
+    src: url('fonts/BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/BEBAS___-webfont.woff') format('woff'),
+         url('fonts/BEBAS___-webfont.ttf') format('truetype'),
+         url('fonts/BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@serifFontFamily: Georgia, "Times New Roman", Times, serif;
+@sansFontFamily: "BebasRegular", Arial, sans-serif;
+
+/* Modular Size typography */
+
+@double_octave: (4 / 1.0);
+@major_twelfth: (3 / 1.0);
+@major_eleventh: (8 / 3.0);
+@major_tenth: (5 / 2.0);
+@octave: (2 / 1.0);
+@major_seventh: (15 / 8.0);
+@minor_seventh: (16 /9.0);
+@major_sixth: (5 / 3.0);
+@minor_sixth: (8 / 5.0);
+@fifth: (3 / 2.0);
+@augmented_forth: (1.41421356237 / 1.0); /* sqrt(2) / 1.0 */
+@fourth: (4 / 3.0);
+@major_third: (5 / 4.0);
+@minor_third: (6 / 5.0);
+@major_second: (9 / 8.0);
+@minor_second: (16 / 15.0);
+@golden_ratio: (1 / 1.618);
+
+
+@base-font-size: 16; // this is the base font
+@important-font-size: 44;
+@font-ratio: 1.618;
+
+
+@base-diff: @important-font-size / @base-font-size;
+@h1: @important-font-size;
+@h2: (@base-diff / (@base-diff - (@base-diff / @font-ratio)));
+@h3: @font-ratio * (@base-diff - (@base-diff / @font-ratio));
+@h4: @font-ratio;
+@h5: (@base-diff - (@base-diff / @font-ratio));
+@h6: 1; //1em
+
+html {
+font-size: 62.5%; // 10px = 1em
+}
+
+body {
+font-size: ~"@{base-font-size}px";
+font-size: ~"@{h4}rem";
+}
+
+h1, h2, h3, h4, h5, h6 {
+// Whatever values you want here
+}
+
+h1 {
+font-size: ~"@{important-font-size}px";
+font-size: ~"@{base-diff}rem";
+}
+
+h2 {
+@h2-local: round(@base-font-size * @h2);
+font-size: ~"@{h2-local}px";
+font-size: ~"@{h2}rem";
+}
+
+h3 {
+@h3-local: round(@base-font-size * @h3);
+font-size: ~"@{h3-local}px";
+font-size: ~"@{h3}rem";
+}
+
+h4 {
+@h4-local: round(@base-font-size * @h4);
+font-size: ~"@{h4-local}px";
+font-size: ~"@{h4}rem";
+}
+
+h5 {
+@h5-local: round(@base-font-size * @h5);
+font-size: ~"@{h5-local}px";
+font-size: ~"@{h5}rem";
+}
+
+h6 {
+font-size: ~"@{base-font-size}px";
+font-size: ~"@{h6}rem";
+}
+
+// ------------------------------------------  
+// BODY and hyperlinks
+// ------------------------------------------*/
+
+a,
+a:visited,
+a:visited:focus {
+  color: @green;
+  #hl.transition(all, 0.5s, ease);
+  
+  &:hover, &:hover:visited {
+	  color: @darkgreen;
+  }
+  
+  &:active {
+    color: #B3B3A5;
+    }
+  &:link {
+    -webkit-tap-highlight-color: #1F7E9A;
+  }
+
+}
+
+body {
+    color: #242424;
+    margin: 0;
+    font-family: @serifFontFamily;
+    background: url(../img/body.png) repeat 0px 0px;
+}
+
+
+// ------------------------------------------  
+// MEDIA QUERIES
+// ------------------------------------------*/
+@phone: ~"screen and (max-width: 480px)";
+@phoneP: ~"screen and (max-width: 320px)";
+@phoneL: ~"screen and (min-width: 321px) and (max-width: 480px)";
+
+@phoneAndTablet: ~"screen and (max-width: 768px)";
+
+@tablet: ~"screen and (min-width: 600px)";
+@tabletP: ~"screen and (min-width: 481px) and (max-width: 768px)";
+@tabletL: ~"screen and (min-width: 769px) and (max-width: 1024px)";
+
+@desktop: ~"screen and (min-width: 992px)";
+@desktopWide: ~"screen and (min-width: 1382px)";
+@lessThanDesktop: ~"screen and (max-width: 991px)";
+
+
+
+// GOOD:
+// @media all and (max-width: @tabletWidth) {
+//   body {
+//     
+//   }
+// }
+// 
+// BETTER:
+// body {
+// 	@media @tablet {
+// 		background: #000;
+// 	}
+// }
+
+
+// @media only screen and (min-width: 320px) {
+// 
+//   /* Small screen, non-retina */
+// 
+// }
+// 
+// @media
+// only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 320px),
+// only screen and ( min--moz-device-pixel-ratio: 2) and (min-width: 320px),
+// only screen and ( -o-min-device-pixel-ratio: 2/1) and (min-width: 320px),
+// only screen and ( min-device-pixel-ratio: 2) and (min-width: 320px),
+// only screen and ( min-resolution: 192dpi) and (min-width: 320px),
+// only screen and ( min-resolution: 2dppx) and (min-width: 320px) {
+// 
+//   /* Small screen, retina, stuff to override above media query */
+// 
+// }
+// 
+// @media only screen and (min-width: 700px) {
+// 
+//   /* Medium screen, non-retina */
+// 
+// }
+// 
+// @media
+// only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 700px),
+// only screen and ( min--moz-device-pixel-ratio: 2) and (min-width: 700px),
+// only screen and ( -o-min-device-pixel-ratio: 2/1) and (min-width: 700px),
+// only screen and ( min-device-pixel-ratio: 2) and (min-width: 700px),
+// only screen and ( min-resolution: 192dpi) and (min-width: 700px),
+// only screen and ( min-resolution: 2dppx) and (min-width: 700px) {
+// 
+//   /* Medium screen, retina, stuff to override above media query */
+// 
+// }
+// 
+// @media only screen and (min-width: 1300px) {
+// 
+//   /* Large screen, non-retina */
+// 
+// }
+// 
+// @media
+// only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 1300px),
+// only screen and ( min--moz-device-pixel-ratio: 2) and (min-width: 1300px),
+// only screen and ( -o-min-device-pixel-ratio: 2/1) and (min-width: 1300px),
+// only screen and ( min-device-pixel-ratio: 2) and (min-width: 1300px),
+// only screen and ( min-resolution: 192dpi) and (min-width: 1300px),
+// only screen and ( min-resolution: 2dppx) and (min-width: 1300px) {
+// 
+//   /* Large screen, retina, stuff to override above media query */
+// 
+// }
+
+/* For CSS image replacement fade on hover transition 
+	USAGE: #llama.spriteHoverFade(50px, 50px, '../img/sprites.png', '0px', '0px', '-50px', '0px');
+*/
+
+#llama {
+	.spriteHoverFade(@width: 10px, @height: 10px, @imageURL: '', @offsetX: 0px, @offsetY: 0px, @hoverOffsetX: 50px, @hoverOffsetY: 50px) {
+		background-position: ~"@{offsetX}" ~"@{offsetY}";
+		display: inline-block;
+		position: relative;
+		text-indent: -9999px;
+		width: @width;
+		height: @height;
+		background-image: url("@{imageURL}");
+		background-repeat: no-repeat;
+	
+		span {
+			position: absolute;
+			top: 0; 
+			left: 0; 
+			bottom: 0; 
+			right: 0;
+			background-image: url("@{imageURL}");
+			background-position: ~"@{hoverOffsetX}" ~"@{hoverOffsetY}";
+			#hl.opacity(0);
+			#hl.transition(opacity, 0.5s, ease);
+		}
+	
+		&:hover span {
+			#hl.opacity(1);
+		}
+	
+	}
+
+}
+
+/* Media Query Canary */
+.mqcanary {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	&:after {
+	content:'No MQ'; 
+	background-color:yellow;
+	
+	}
+
+	@media @tablet {
+		&:after {content:'tablet'; background-color:yellow;}
+	}
+	@media @desktop {
+		&:after {content:'desktop'; background-color:yellow;}
+	}
+	@media @desktopWide {
+		&:after {content:'desktopWide'; background-color:yellow;}
+	}
+
+}
+
