@@ -1,4 +1,4 @@
-llama-boilerplate
+Llama Front-End Boilerplate
 =================
 
 A front-end development boilerplate with Grunt, Bower components, node modules.
